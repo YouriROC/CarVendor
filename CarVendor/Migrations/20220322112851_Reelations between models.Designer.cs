@@ -3,6 +3,7 @@ using CarVendor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarVendor.Migrations
 {
     [DbContext(typeof(CarVendorContext))]
-    partial class CarVendorContextModelSnapshot : ModelSnapshot
+    [Migration("20220322112851_Reelations between models")]
+    partial class Reelationsbetweenmodels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,8 +59,7 @@ namespace CarVendor.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(75)
-                        .HasColumnType("nvarchar(75)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -66,8 +67,7 @@ namespace CarVendor.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostalCode")
                         .IsRequired()

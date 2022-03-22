@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarVendor.Models
 {
@@ -24,6 +25,7 @@ namespace CarVendor.Models
         /// </value>
         [Display(Name = "Merk")]
         [MaxLength(50, ErrorMessage ="{0} mag maximaal {1} tekens bevatten")]
+        [Column("Mark", TypeName = "nvarchar")]
         public string Mark { get; set; } = string.Empty;
 
         /// <summary>
@@ -34,6 +36,12 @@ namespace CarVendor.Models
         /// </value>
         [Display(Name = "Type")]
         public string Model { get; set; } = string.Empty;
+
+        #region Navigation Properties
+        [ForeignKey("CustomerId")]
+        public int CustomerId { get; set; }
+        public Customer? Customer { get; set; }
+        #endregion
 
         #endregion Fields and properties
     }
